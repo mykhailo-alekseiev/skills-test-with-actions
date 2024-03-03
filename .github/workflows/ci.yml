@@ -1,4 +1,17 @@
-- name: Run markdown lint
-  run: |
-    npm install remark-cli remark-preset-lint-consistent
-    npx remark . --use remark-preset-lint-consistent --frail
+name: Issue Workflow
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output GiHub context
+        run: |
+          npm install remark-cli remark-preset-lint-consistent
+          npx remark . --use remark-preset-lint-consistent --frail
+
+    
